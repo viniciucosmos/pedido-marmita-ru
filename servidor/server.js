@@ -1,7 +1,9 @@
 import express from 'express'
-import public_Routes from './routes/public.js'
-
+import publicRoutes from './routes/public.js'
 
 const app = express()
+app.use(express.json())
+
+app.use('/', publicRoutes)
 
 app.listen(3000, () => console.log("Servidor Rodando! "))
