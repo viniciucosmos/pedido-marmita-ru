@@ -1,0 +1,46 @@
+# ===============================
+# Node.js & npm
+# ===============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ===============================
+# Vite (React)
+# ===============================
+dist/
+.vite/
+*.log
+
+# ===============================
+# Ambiente (segurança!)
+# ===============================
+.env
+.env.*
+!.env.example
+
+# ===============================
+# VS Code e IDEs
+# ===============================
+.vscode/
+.idea/
+
+# ===============================
+# Testes e cobertura (caso use)
+# ===============================
+coverage/
+*.lcov
+
+# ===============================
+# Sistema operacional (Windows/macOS/Linux)
+# ===============================
+.DS_Store
+Thumbs.db
+*~
+
+# ===============================
+# TypeScript (caso venha a usar)
+# ===============================
+*.tsbuildinfo
