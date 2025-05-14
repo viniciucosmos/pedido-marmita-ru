@@ -4,8 +4,7 @@ import connection from '../../db/connection.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
-
-//só é necessario importar a função de rotas aqui
+//só precisa importar a função de rotas aqui
 const router = express.Router();
 
 //cadastro inicio
@@ -57,13 +56,34 @@ router.post("/cadastro", (req, res) => {
 
 //login
 router.post("/login", (req, res) => {
-  const { matricula, senha } = req.body;
+  const { matricula, senha_aluno } = req.body;
 
-  const userTeste = {
-    matricula: "2021",
-    senha: "123",
-  };
-});
+  if (!matricula || !senha_aluno) {
+    return res.status(400).json({ erro: "Matrícula e senha são obrigatórias" });
+  }
+
+  const consulta = "SELECT * FROM alunos WHERE matricula = ?";
+
+  connection.query(consulta, [matricula], (erro, resultados) => {
+    if (erro) {
+      console.error("Erro ao consultar aluno:", erro);
+      return res.status(500).json({ erro: "Erro ao verificar login" });
+    }
+
+    if (resultados.length === 0) {
+      return res.status(401).json({ erro: "Matrícula não encontrada" });
+    }
+
+    const aluno = resultados[0];
+
+    if (aluno.senha_aluno !== senha_aluno) {
+      return res.status(401).json({ erro: "Senha incorreta" });
+    }
+ 
+    return res.status(200).json({ mensagem: "Login realizado com sucesso", aluno });
+  });
+}); 
+
 
 //exportar pra depois chamar no server
 export default router;
