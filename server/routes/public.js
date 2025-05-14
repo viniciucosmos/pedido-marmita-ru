@@ -1,6 +1,5 @@
 import express from "express";
 import connection from '../../db/connection.js';
-
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -49,11 +48,6 @@ router.post("/cadastro", (req, res) => {
   });   
 });
  
-//cadastro fim
-
-
-//res.status(201).json(user);
-
 //login
 router.post("/login", (req, res) => {
   const { matricula, senha_aluno } = req.body;
