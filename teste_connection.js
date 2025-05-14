@@ -1,6 +1,7 @@
 // testConnection.js
-const connection = require('./db/connection.js');
-require('dotenv').config();
+import connection from '../db/connection.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 connection.query('SELECT 1 + 1 AS resultado', (err, results) => {
   if (err) {
