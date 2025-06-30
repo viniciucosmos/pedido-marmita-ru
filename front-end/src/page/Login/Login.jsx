@@ -7,9 +7,32 @@ import Logo from './../../assets/logo.png';
 import LogoNome from './../../assets/logo-nome-verde.png';
 import api from '../../../services/api.js';
 
+
 function Login() {
 
+  const inputMatricula = useRef()
+  const inputSenha = useRef()
+
+  async function loginUsers() {
+    const matricula = inputMatricula.current.value
+    const senha = inputSenha.current.value
   
+
+  // Monta objeto com os dados
+    const loginUsuario = {
+      matricula,
+      senha,
+    }
+
+    try {
+      const res = await api.post('/login', loginUsuario)
+      alert(res.data.mensagem || "Login realizado com sucesso!")
+    } catch (err) {
+      console.error("Erro ao realizar:", err)
+      alert(err.response?.data?.erro || "Erro ao realizar login.")
+    }
+
+  }
 
 const [menuAberto, setMenuAberto] = useState(false);
     const avisosRef = useRef(null);
@@ -53,16 +76,17 @@ const [menuAberto, setMenuAberto] = useState(false);
       <main>
         <h1 className="login-titulo">LOGIN</h1>
         <label className="label-login">Matrícula</label>
-        <input type="number" placeholder="  Digite sua matrícula" />
+        <input type="number" placeholder="  Digite sua matrícula" ref={inputMatricula}/>
+
         <label className="label-login">Senha</label>
-        <input type="password" placeholder="  Digite sua Senha" />
+        <input type="password" placeholder="  Digite sua Senha" ref={inputSenha}/>
 
         <p className='redCadastro'>
          Ainda não é cadastrado? <a className="linkcad" href="/cadastro">Clique aqui e cadastre-se!</a>
         </p>
         
         
-        <button className='botao-login'>Fazer Login</button>
+        <button className='botao-login'  onClick={loginUsers} >Fazer Login</button>
       </main>
       
       
