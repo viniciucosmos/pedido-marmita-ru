@@ -6,11 +6,11 @@ dotenv.config();
 //só precisa importar a função de rotas aqui
 const router = express.Router();
 
-//cadastro inicio
+//cadastro 
 router.post("/cadastro", (req, res) => {
-  const { nome_aluno, matricula, cpf,  email_aluno, senha_aluno, campus, subsidio, celular , data_criacao} = req.body;
+  const { nome, matricula, cpf,  email, senha, campus, celular , data_criacao} = req.body;
 
-  if (!nome_aluno || !matricula || !cpf ||  !senha_aluno || !email_aluno || !campus || !subsidio || !celular || !data_criacao) {
+  if (!nome || !matricula || !cpf ||  !senha || !email|| !campus || !celular || !data_criacao) {
     return res.status(400).json({ erro: "Todos os campos são obrigatórios" });
   }
 
@@ -19,7 +19,7 @@ router.post("/cadastro", (req, res) => {
    const dataFormatada = `${ano}-${mes}-${dia}`;
 
   // verifica se a matrícula já tá cadastrada
-  const verificar = "SELECT * FROM alunos WHERE matricula = ?";
+  const verificar = "SELECT * FROM usuarios WHERE matricula = ?";
   connection.query(verificar, [matricula], (erro, resultados) => {
     if (erro) {
       return res.status(500).json({ erro: "Erro ao verificar matrícula" });
@@ -30,14 +30,14 @@ router.post("/cadastro", (req, res) => {
     }
 
     const inserir =
-      "INSERT INTO alunos (nome_aluno, matricula, cpf,  senha_aluno, email_aluno, campus, subsidio, celular, data_criacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO usuarios (nome, matricula, cpf,  senha, email, campus, celular, data_criacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     connection.query(
       inserir,
-      [nome_aluno, matricula, cpf,  senha_aluno, email_aluno, campus, subsidio, celular, dataFormatada],
+      [nome, matricula, cpf,  senha, email, campus,  celular, dataFormatada],
       (erro) => {
         if (erro) {
           console.error("Erro no INSERT:", erro); 
-          return res.status(500).json({ erro: "Erro ao cadastrar aluno" });
+          return res.status(500).json({ erro: "Erro ao cadastrar usuario" });
         }
 
         return res
@@ -50,17 +50,17 @@ router.post("/cadastro", (req, res) => {
  
 //login
 router.post("/login", (req, res) => {
-  const { matricula, senha_aluno } = req.body;
+  const { matricula, senha } = req.body;
 
-  if (!matricula || !senha_aluno) {
+  if (!matricula || !senha) {
     return res.status(400).json({ erro: "Matrícula e senha são obrigatórias" });
   }
 
-  const consulta = "SELECT * FROM alunos WHERE matricula = ?";
+  const consulta = "SELECT * FROM usuarios WHERE matricula = ?";
 
   connection.query(consulta, [matricula], (erro, resultados) => {
     if (erro) {
-      console.error("Erro ao consultar aluno:", erro);
+      console.error("Erro ao consultar usuario:", erro);
       return res.status(500).json({ erro: "Erro ao verificar login" });
     }
 
@@ -68,13 +68,13 @@ router.post("/login", (req, res) => {
       return res.status(401).json({ erro: "Matrícula não encontrada" });
     }
 
-    const aluno = resultados[0];
+    const usuario = resultados[0];
 
-    if (aluno.senha_aluno !== senha_aluno) {
+    if (usuario.senha !== senha) {
       return res.status(401).json({ erro: "Senha incorreta" });
     }
  
-    return res.status(200).json({ mensagem: "Login realizado com sucesso", aluno });
+    return res.status(200).json({ mensagem: "Login realizado com sucesso", usuario });
   });
 }); 
 

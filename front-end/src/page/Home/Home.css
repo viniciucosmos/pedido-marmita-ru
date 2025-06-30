@@ -1,0 +1,195 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+.botao-menu {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 70px !important;      /* força largura pequena */
+  height: 70px !important;     /* força altura pequena */
+  margin: 0 !important;
+  border-radius: 0 !important;
+  align-items: center !important;
+ 
+}
+.icone-menu {
+  width: 24px;   /* Ou outro valor pequeno */
+  height: 24px;
+}
+
+.logo-sidebar {
+  width: 40px; /* ajuste conforme o tamanho desejado */
+  height: auto;
+  
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+
+  color: white;
+  padding: 1rem;
+
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+
+  z-index: 1000;
+
+  /* Remova a opacidade aqui! */
+  background: none;
+}
+
+.sidebar::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, #EFEFEF, #575656);
+  opacity: 0.93;   /* só o fundo fica semitransparente */
+  z-index: -1;    /* fica atrás do conteúdo */
+  border-radius: inherit; /* opcional, se quiser bordas */
+}
+
+.sidebar.aberto {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.sidebar .fechar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  color: #16492F;
+  font-size: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.sidebar li {
+  margin: 1rem 0;
+}
+
+.sidebar a {
+  color: #16492F;
+  text-decoration: none;
+  font-family: 'Segoe UI';
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sidebar button {
+  color: #16492F;
+  text-decoration: none;
+  font-family: 'Segoe UI';
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0px 0px;
+  font-size: 20px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.sidebar link {
+  color: #16492F;
+  text-decoration: none;
+  font-family: 'Segoe UI';
+  font-weight: bold;
+}
+.main-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* centraliza horizontalmente */
+  justify-content: center;
+  margin-top: 20px;
+  gap: 1rem;
+}
+
+.logo-central {
+  width: 250px;
+  height: auto;
+}
+
+.cardapio{
+  color: #E4D86F;
+  font-family: 'Segoe UI';
+  margin-top: 50px;
+  font-size: 20px;
+}
+
+.img-cardapio {
+  width: 300px;
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  border-radius: 24px;
+  margin-bottom: 20px;
+}
+
+.img-cardapio:hover{
+  transform: scale(1.2)
+}
+
+.botao-pedido {
+  font-weight: bold;
+  background-color: #E4D86F;
+  color: #16492F;
+  font-size: 18px;
+  font-family: 'Segoe UI';
+  padding: 20px 20px;
+  width: 200px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  justify-content: center;
+}
+.botao-pedido:hover {
+  background-color: gray;
+}
+
+.diapedido {
+  margin-top: 0px;
+  display: block;
+  color: #E4D86F;
+  font-weight: light;
+  font-family: 'Segoe UI';
+  align-self: center;
+  
+}
+
+
+.titulo-aviso{
+  display: block;
+  margin: 0 auto;
+  margin-top: 60px;
+  width: 150px; /* ou ajuste conforme necessário */
+}
+
+.avisos-texto{
+  margin-top: 20px;
+  color: #E4D86F;
+  font-weight: light;
+  font-family: 'Segoe UI';
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
