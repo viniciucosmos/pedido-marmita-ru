@@ -6,6 +6,8 @@ import Logo from './../../assets/logo.png';
 import LogoNome from './../../assets/logo-nome-verde.png';
 import api from '../../../services/api.js';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
+
 
 function Cadastro() {
 
@@ -16,6 +18,9 @@ function Cadastro() {
   const inputCelular = useRef()
   const inputEmail = useRef()
   const inputCampus = useRef()
+
+  const navigate = useNavigate()
+
  
   async function createUsers() {
     const nome = inputName.current.value
@@ -46,6 +51,7 @@ function Cadastro() {
     try {
       const res = await api.post('/cadastro', novoUsuario)
       alert(res.data.mensagem || "Cadastro realizado com sucesso!")
+      navigate('/login') //indo pra tela de login
     } catch (err) {
       console.error("Erro ao cadastrar:", err)
       alert(err.response?.data?.erro || "Erro ao cadastrar usuário.")

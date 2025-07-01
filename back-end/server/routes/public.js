@@ -42,7 +42,7 @@ router.post("/cadastro", (req, res) => {
 
         return res
           .status(201)
-          .json({ mensagem: "Cadastro realizado com sucesso" });
+          .json({ mensagem: "Cadastro Realizado!" });
       }
     );
   });   
@@ -74,7 +74,7 @@ router.post("/login", (req, res) => {
       return res.status(401).json({ erro: "Senha incorreta" });
     }
  
-    return res.status(200).json({ mensagem: "Login realizado com sucesso", usuario });
+    return res.status(200).json({ mensagem: "Login Realizado!", usuario });
   });
 }); 
 

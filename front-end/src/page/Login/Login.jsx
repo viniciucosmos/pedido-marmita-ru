@@ -6,12 +6,17 @@ import menuIcon from './../../assets/navbar-verde.png';
 import Logo from './../../assets/logo.png';
 import LogoNome from './../../assets/logo-nome-verde.png';
 import api from '../../../services/api.js';
+import { useNavigate } from 'react-router-dom'
+
 
 
 function Login() {
 
   const inputMatricula = useRef()
   const inputSenha = useRef()
+
+  const navigate = useNavigate() //faz a nevegação entre as paginas
+  
 
   async function loginUsers() {
     const matricula = inputMatricula.current.value
@@ -27,6 +32,7 @@ function Login() {
     try {
       const res = await api.post('/login', loginUsuario)
       alert(res.data.mensagem || "Login realizado com sucesso!")
+      navigate('/home') //indo pra tela de home
     } catch (err) {
       console.error("Erro ao realizar:", err)
       alert(err.response?.data?.erro || "Erro ao realizar login.")
