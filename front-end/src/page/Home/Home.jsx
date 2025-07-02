@@ -31,7 +31,7 @@ function Home() {
         <img src={Logo} alt="Logo Sidebar" className="logo-sidebar" />
         <button onClick={toggleMenu} className="fechar">×</button>
         <ul>
-          <li><Link to= '/'>Início</Link></li>
+          <li><Link to= '/home'>Início</Link></li>
           <li><a href="#perfil">Perfil</a></li>
           <li><button onClick={irParaAvisos}>Avisos</button></li>
           <li><a href="#regrassubsidio">Regras de Subsídio</a></li>
@@ -44,8 +44,11 @@ function Home() {
       <main className='main-home'>
         <img src={LogoNome} alt="Logo Nome" className="logo-central" />
         <h2 className='cardapio'>Cardápio Semanal</h2>
-        <img src={ImgCardapio} alt="Imagem Cardapio" className="img-cardapio" />
+        <img src={ImgCardapio} alt="Imagem Cardapio" className="img-cardapio" /> 
+        <Link to="/fazer-pedido">
         <button className='botao-pedido'>Realizar Pedido</button>
+      </Link>
+        
         <label className="diapedido">Para dia xx/xx</label>
 
       

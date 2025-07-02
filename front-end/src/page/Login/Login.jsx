@@ -30,8 +30,9 @@ function Login() {
     }
 
     try {
-      const res = await api.post('/login', loginUsuario)
+      const res = await api.post('/public/login', loginUsuario)
       alert(res.data.mensagem || "Login realizado com sucesso!")
+      sessionStorage.setItem("matricula", matricula);
       navigate('/home') //indo pra tela de home
     } catch (err) {
       console.error("Erro ao realizar:", err)
@@ -40,43 +41,17 @@ function Login() {
 
   }
 
-const [menuAberto, setMenuAberto] = useState(false);
-    const avisosRef = useRef(null);
-  
-    const toggleMenu = () => {
-      setMenuAberto(!menuAberto);
-    };
-  
-     const irParaAvisos = () => {
-      toggleMenu(); // fecha o menu
-      avisosRef.current?.scrollIntoView({ behavior: 'smooth' });
-    };
 
   return (
    <div className="Login">
       <div className='header'>
 
-      <button className="botao-menu" onClick={toggleMenu}>
-        <img src={menuIcon} alt="Abrir menu" className="icone-menu" /> 
-      </button>
 
       <img src={LogoNome} alt="Logo topo" className="logo-topo-login" />
 
 
       </div>
 
-      <div className={`sidebar ${menuAberto ? 'aberto' : ''}`}>
-        <img src={Logo} alt="Logo Sidebar" className="logo-sidebar" />
-        <button onClick={toggleMenu} className="fechar">×</button>
-        <ul>
-          <li><Link to= '/'>Início</Link></li>
-          <li><a href="#perfil">Perfil</a></li>
-          <li><button onClick={irParaAvisos}>Avisos</button></li>
-          <li><a href="#regrassubsidio">Regras de Subsídio</a></li>
-          <li><a href="#ajuda">Ajuda</a></li>
-          <li><a href="#painel">Paine de Controle</a></li>
-        </ul>
-      </div>
       
 
       <main>

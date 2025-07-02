@@ -1,11 +1,8 @@
 import './Cadastro.css';
 import React, {  useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import menuIcon from './../../assets/navbar-verde.png';
-import Logo from './../../assets/logo.png';
 import LogoNome from './../../assets/logo-nome-verde.png';
 import api from '../../../services/api.js';
-import { useEffect } from 'react';
+
 import { useNavigate } from 'react-router-dom'
 
 
@@ -49,53 +46,29 @@ function Cadastro() {
     }
 
     try {
-      const res = await api.post('/cadastro', novoUsuario)
+      const res = await api.post('/private/cadastro', novoUsuario)
       alert(res.data.mensagem || "Cadastro realizado com sucesso!")
       navigate('/login') //indo pra tela de login
     } catch (err) {
-      console.error("Erro ao cadastrar:", err)
+      console.error("Erro ao cadastrar:", err.response?.data || err)
       alert(err.response?.data?.erro || "Erro ao cadastrar usuário.")
+
     }
 
   }
    
 
-  const [menuAberto, setMenuAberto] = useState(false);
-    const avisosRef = useRef(null);
   
-    const toggleMenu = () => {
-      setMenuAberto(!menuAberto);
-    };
-  
-     const irParaAvisos = () => {
-      toggleMenu(); // fecha o menu
-      avisosRef.current?.scrollIntoView({ behavior: 'smooth' });
-    };
-
   return (
    <div className="Cadastro">
       <div className='header'>
 
-      <button className="botao-menu" onClick={toggleMenu}>
-        <img src={menuIcon} alt="Abrir menu" className="icone-menu" /> 
-      </button>
 
       <img src={LogoNome} alt="Logo topo" className="logo-topo" />
 
       </div>
 
-      <div className={`sidebar ${menuAberto ? 'aberto' : ''}`}>
-        <img src={Logo} alt="Logo Sidebar" className="logo-sidebar" />
-        <button onClick={toggleMenu} className="fechar">×</button>
-        <ul>
-          <li><Link to= '/'>Início</Link></li>
-          <li><a href="#perfil">Perfil</a></li>
-          <li><button onClick={irParaAvisos}>Avisos</button></li>
-          <li><a href="#regrassubsidio">Regras de Subsídio</a></li>
-          <li><a href="#ajuda">Ajuda</a></li>
-          <li><a href="#painel">Paine de Controle</a></li>
-        </ul>
-      </div>
+    
       
       <main>
         <h1 className="cadastro-titulo">CADASTRO</h1>

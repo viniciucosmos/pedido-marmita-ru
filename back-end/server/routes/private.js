@@ -1,12 +1,30 @@
 import express from 'express';
 import QRCode from 'qrcode';
 import connection from '../../db/connection.js';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const router = express.Router();
 
-// Rota de pedido
+// Rota para obter usuário por matrícula (GET /usuario/:matricula)
+router.get("/usuario/:matricula", (req, res) => {
+  const { matricula } = req.params;
+
+  const consulta = "SELECT nome, matricula, campus FROM usuarios WHERE matricula = ?";
+  connection.query(consulta, [matricula], (erro, resultados) => {
+    if (erro) {
+      console.error("Erro ao buscar usuario:", erro);
+      return res.status(500).json({ erro: "Erro ao buscar usuario" });
+    }
+
+    if (resultados.length === 0) {
+      return res.status(404).json({ erro: "Usuário não encontrado" });
+    }
+
+    const usuario = resultados[0];
+    return res.status(200).json({ usuario });
+  });
+});
+
+// Rota para criar pedido (POST /pedido)
 router.post("/pedido", (req, res) => {
   const { matricula } = req.body;
 
@@ -14,7 +32,7 @@ router.post("/pedido", (req, res) => {
     return res.status(400).json({ erro: "Matrícula é obrigatória" });
   }
 
-  // Busca dados do usuario
+  // Busca dados do usuário
   const consulta = "SELECT id_usuario, subsidio FROM usuarios WHERE matricula = ?";
   connection.query(consulta, [matricula], (erro, resultados) => {
     if (erro) {
@@ -27,10 +45,9 @@ router.post("/pedido", (req, res) => {
     }
 
     const usuario = resultados[0];
-    const valor = usuario.subsido ? 2.00 : 14.00;
+    const valor = usuario.subsidio ? 2.00 : 14.00;
 
-
-    // (Opcional) salvar pedido
+    // Salvar pedido
     const salvar = "INSERT INTO pedidos (id_usuario_FK, valor) VALUES (?, ?)";
     connection.query(salvar, [usuario.id_usuario, valor], (erro) => {
       if (erro) {
@@ -59,4 +76,3 @@ router.post("/pedido", (req, res) => {
 });
 
 export default router;
-
