@@ -10,18 +10,18 @@ html {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 80px;
+  height: 250px;
 }
 
 .logo-topo-login{
-  position:relative;
+  position:static;
   width: 250px;   /* Ou outro valor pequeno */
   height: auto;
-  display: flex;
+  display:block;
   align-items: center;
   margin-left: 52px;
   margin-top: 150px;
-  
+  margin-bottom: 80px;
 
 }
 

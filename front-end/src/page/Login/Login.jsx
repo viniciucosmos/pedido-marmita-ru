@@ -33,7 +33,12 @@ function Login() {
       const res = await api.post('/public/login', loginUsuario)
       alert(res.data.mensagem || "Login realizado com sucesso!")
       sessionStorage.setItem("matricula", matricula);
-      navigate('/home') //indo pra tela de home
+      // Redireciona diferente dependendo do usuário
+if (matricula === "admin") {
+  navigate('/home-admin'); // página especial para esse usuário
+} else {
+  navigate('/home'); // página padrão
+}
     } catch (err) {
       console.error("Erro ao realizar:", err)
       alert(err.response?.data?.erro || "Erro ao realizar login.")
@@ -56,8 +61,8 @@ function Login() {
 
       <main>
         <h1 className="login-titulo">LOGIN</h1>
-        <label className="label-login">Matrícula</label>
-        <input type="number" placeholder="  Digite sua matrícula" ref={inputMatricula}/>
+        <label className="label-login">Usuário (Matrícula)</label>
+        <input type="text" placeholder="  Digite seu usuário" ref={inputMatricula}/>
 
         <label className="label-login">Senha</label>
         <input type="password" placeholder="  Digite sua Senha" ref={inputSenha}/>

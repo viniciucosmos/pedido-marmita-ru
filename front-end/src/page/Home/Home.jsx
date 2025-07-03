@@ -36,7 +36,6 @@ function Home() {
           <li><button onClick={irParaAvisos}>Avisos</button></li>
           <li><a href="#regrassubsidio">Regras de Subsídio</a></li>
           <li><a href="#ajuda">Ajuda</a></li>
-          <li><a href="#painel">Paine de Controle</a></li>
         </ul>
       </div>
       

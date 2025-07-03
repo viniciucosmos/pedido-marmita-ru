@@ -26,9 +26,9 @@ const [menuAberto, setMenuAberto] = useState(false);
 
   return (
    <div className="PainelControle">
-      <div className='header'>
+      <div className='header-painel'>
 
-      <button className="botao-menu" onClick={toggleMenu}>
+      <button className="botao-menu-painel" onClick={toggleMenu}>
         <img src={menuIcon} alt="Abrir menu" className="icone-menu" /> 
       </button>
 
@@ -43,7 +43,7 @@ const [menuAberto, setMenuAberto] = useState(false);
         <img src={Logo} alt="Logo Sidebar" className="logo-sidebar" />
         <button onClick={toggleMenu} className="fechar">×</button>
         <ul>
-          <li><Link to= '/'>Início</Link></li>
+          <li><Link to= '/home-admin'>Início</Link></li>
           <li><a href="#perfil">Perfil</a></li>
           <li><button onClick={irParaAvisos}>Avisos</button></li>
           <li><a href="#regrassubsidio">Regras de Subsídio</a></li>
@@ -55,7 +55,7 @@ const [menuAberto, setMenuAberto] = useState(false);
 
 
 
-      <main>
+      <main className='main-painel'>
 
         <h1 className='painel-titulo'>PAINEL DE CONTROLE</h1>
         <h2 className='painel-subtitulo'>Gerencie cardápios, acompanhe os pedidos

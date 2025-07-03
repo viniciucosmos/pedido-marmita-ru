@@ -69,7 +69,6 @@ function Pedidos() {
           <li><button onClick={irParaAvisos}>Avisos</button></li>
           <li><a href="#regrassubsidio">Regras de Subsídio</a></li>
           <li><a href="#ajuda">Ajuda</a></li>
-          <li><a href="#painel">Painel de Controle</a></li>
         </ul>
       </div>
 

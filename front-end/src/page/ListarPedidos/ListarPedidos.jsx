@@ -38,12 +38,12 @@ function ListarPedidos() {
         <img src={Logo} alt="Logo Sidebar" className="logo-sidebar" />
         <button onClick={toggleMenu} className="fechar">×</button>
         <ul>
-          <li><Link to='/home'>Início</Link></li>
+          <li><Link to='/home-admin'>Início</Link></li>
           <li><a href="#perfil">Perfil</a></li>
           <li><a href="#avisos">Avisos</a></li>
           <li><a href="#regrassubsidio">Regras de Subsídio</a></li>
           <li><a href="#ajuda">Ajuda</a></li>
-          <li><a href="#painel">Painel de Controle</a></li>
+          <li><Link to='/painel-de-controle'>Painel de Controle</Link></li>
         </ul>
       </div>
 
