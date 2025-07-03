@@ -27,10 +27,10 @@ function ListarPedidos() {
     <div className="ListarPedidos">
       {/* HEADER */}
       <div className='header'>
-        <button className="botao-menu" onClick={toggleMenu}>
+        <button className="botao-menu-listar" onClick={toggleMenu}>
           <img src={menuIcon} alt="Abrir menu" className="icone-menu" />
         </button>
-        <img src={LogoNome} alt="Logo topo" className="logo-topo-listar" />
+       
       </div>
 
       {/* SIDEBAR */}

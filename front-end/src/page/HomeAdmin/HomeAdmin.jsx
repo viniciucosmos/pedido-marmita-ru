@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './HomeAdmin.css';
 import menuIcon from './../../assets/navbar.svg';
@@ -9,7 +9,8 @@ import Logo from './../../assets/logo.png';
 
 function HomeAdmin() {
    const [menuAberto, setMenuAberto] = useState(false);
-  const avisosRef = useRef(null);
+   const [textoAviso, setTextoAviso] = useState(''); // ⬅ Estado para o aviso
+   const avisosRef = useRef(null);
 
   const toggleMenu = () => {
     setMenuAberto(!menuAberto);
@@ -20,10 +21,21 @@ function HomeAdmin() {
     avisosRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+   // ⬇ Pega o aviso salvo no localStorage ao carregar a página
+    useEffect(() => {
+      const avisoSalvo = localStorage.getItem('textoAviso');
+      if (avisoSalvo) {
+        setTextoAviso(avisoSalvo);
+      } else {
+        setTextoAviso("Nenhum aviso disponível no momento.");
+      }
+    }, []);
+  
+
   return (
     <div className="Home">
     
-     <button className="botao-menu" onClick={toggleMenu}>
+     <button className="botao-menu-admin" onClick={toggleMenu}>
         <img src={menuIcon} alt="Abrir menu" className="icone-menu" />
       </button>
 
@@ -41,8 +53,8 @@ function HomeAdmin() {
       </div>
       
 
-      <main className='main-home'>
-        <img src={LogoNome} alt="Logo Nome" className="logo-central" />
+      <main className='main-home-admin'>
+        <img src={LogoNome} alt="Logo Nome" className="logo-central-admin" />
         <h2 className='cardapio'>Cardápio Semanal</h2>
         <img src={ImgCardapio} alt="Imagem Cardapio" className="img-cardapio" /> 
         <Link to="/painel-de-controle">
@@ -55,9 +67,7 @@ function HomeAdmin() {
 
       <section ref={avisosRef} className="avisos">
         <img src={Avisos} alt="titulo aviso" className="titulo-aviso" />
-        <p className="avisos-texto">
-         Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado.
-        </p>
+         <p className="avisos-texto">{textoAviso}</p>
       </section>
     </div>
   );

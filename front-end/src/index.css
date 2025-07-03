@@ -7,7 +7,7 @@ body {
 }
 
 .Home {
-  min-height: 100vh;
+  min-height: 100%;
   background-color: #16492F; /* branco suave */
   background-image: url(./assets/pattern.png);
   background-position: center center; /* para centralizar a imagem */
@@ -15,6 +15,7 @@ body {
   font-family: inherit;
   position: relative; /* garante que elementos absolutos/relativos fiquem ancorados aqui */
   overflow-x: hidden; 
+  
 }
 
 .PainelControle {
@@ -67,6 +68,17 @@ body {
 
 .ListarPedidos{
   min-height: 100vh;
+  background-color: #F9F4C9; 
+  font-family: inherit;
+  background-image: url(./assets/pattern.png);
+  background-position: center center; /* para centralizar a imagem */
+  background-size: 150% 100%; 
+  position: relative; /* garante que elementos absolutos/relativos fiquem ancorados aqui */
+  overflow-x: hidden; 
+}
+
+.EditarAvisos{
+    min-height: 100vh;
   background-color: #F9F4C9; 
   font-family: inherit;
   background-image: url(./assets/pattern.png);

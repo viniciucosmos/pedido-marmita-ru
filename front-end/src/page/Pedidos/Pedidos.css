@@ -195,7 +195,7 @@ input {
   width: 250px;
   height: 70px;
   justify-content: center;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   margin-top: 30px;
 }
 
@@ -240,7 +240,36 @@ input {
   font-weight: normal;
 }
 
-.qr-container p {
-  margin: 8px 0;
-  font-weight: 600;
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* opcional, para centralizar o texto também */
+  margin-bottom: 60px;
 }
+
+.qr-container p {
+  margin: 15px 0;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: #0d331f;
+}
+
+.mensagem {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0d331f;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.valor {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0d331f;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+

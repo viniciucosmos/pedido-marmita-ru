@@ -6,6 +6,7 @@ import PainelControle from './page/PainelControle/PainelControle';
 import Pedidos from './page/Pedidos/Pedidos'
 import ListarPedidos from './page/ListarPedidos/ListarPedidos';
 import HomeAdmin from './page/HomeAdmin/HomeAdmin';
+import Avisos from './page/Avisos/Avisos';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/fazer-pedido" element={<Pedidos/>} />
         <Route path="/listar-pedidos" element={<ListarPedidos/>} />
         <Route path="/home-admin" element={<HomeAdmin/>} />
+        <Route path="/avisos" element={<Avisos/>} />
 
       </Routes>
     </BrowserRouter>

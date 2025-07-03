@@ -48,7 +48,7 @@ const [menuAberto, setMenuAberto] = useState(false);
           <li><button onClick={irParaAvisos}>Avisos</button></li>
           <li><a href="#regrassubsidio">Regras de Subsídio</a></li>
           <li><a href="#ajuda">Ajuda</a></li>
-          <li><a href="#painel">Paine de Controle</a></li>
+          <li><a href="#painel">Painel de Controle</a></li>
         </ul>
       </div>
       
@@ -72,10 +72,14 @@ e mantenha os avisos atualizados com facilidade.</h2>
             <p>Cardápio</p>
             <img src={IconCardapio} alt="icon cardapio" className="icone-card" />
         </button>
+
+        <Link to="/Avisos" style={{ textDecoration: 'none' }}>
         <button className="botao1">
             <p>Avisos</p>
             <img src={IconAvisos} alt="icon avisos" className="icone-avisos" />
         </button>
+        </Link>
+     
         <button className="botao1">
             <p>Alunos</p>
             <img src={IconAlunos} alt="icon alunos" className="icone-alunos" />
