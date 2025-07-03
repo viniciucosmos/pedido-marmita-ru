@@ -64,7 +64,7 @@ function Cadastro() {
       <div className='header'>
 
 
-      <img src={LogoNome} alt="Logo topo" className="logo-topo" />
+      <img src={LogoNome} alt="Logo topo" className="logo-topo-cadastro" />
 
       </div>
 
