@@ -61,10 +61,13 @@ const [menuAberto, setMenuAberto] = useState(false);
         <h2 className='painel-subtitulo'>Gerencie cardápios, acompanhe os pedidos
 e mantenha os avisos atualizados com facilidade.</h2>
         
-        <button className="botao1">
+       
+        <Link to="/listar-pedidos" style={{ textDecoration: 'none' }}>
+         <button className="botao1">
             <p>Pedidos</p>
             <img src={IconPedido} alt="icon pedido" className="icone-pedido" />
         </button>
+        </Link>
         <button className="botao1">
             <p>Cardápio</p>
             <img src={IconCardapio} alt="icon cardapio" className="icone-card" />

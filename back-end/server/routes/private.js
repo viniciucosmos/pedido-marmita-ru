@@ -50,7 +50,6 @@ router.post("/pedido", (req, res) => {
     // Salvar pedido
     const salvar = "INSERT INTO pedidos (id_usuario_FK, valor, matricula) VALUES (?, ?, ?)";
     connection.query(salvar, [usuario.id_usuario, valor, matricula], (erro) => {
-
       if (erro) {
         console.error("Erro ao salvar pedido:", erro);
         return res.status(500).json({ erro: "Erro ao salvar pedido" });
@@ -73,6 +72,41 @@ router.post("/pedido", (req, res) => {
         });
       });
     });
+  });
+});
+
+// Rota para listar pedidos com filtro (GET /pedidos)
+router.get("/pedidos", (req, res) => {
+  const { filtro } = req.query;
+
+  let condicao = "";
+  if (filtro === "ultimos30") {
+    condicao = "WHERE p.data_pedido >= NOW() - INTERVAL 30 DAY";
+  } else if (filtro === "ultimos1") {
+    condicao = "WHERE p.data_pedido >= NOW() - INTERVAL 1 DAY";
+  }
+
+  const consulta = `
+    SELECT 
+      p.id_pedido, 
+      p.valor, 
+      p.data_pedido,
+      u.nome, 
+      u.matricula, 
+      u.campus
+    FROM pedidos p
+    JOIN usuarios u ON p.id_usuario_FK = u.id_usuario
+    ${condicao}
+    ORDER BY p.data_pedido DESC
+  `;
+
+  connection.query(consulta, (erro, resultados) => {
+    if (erro) {
+      console.error("Erro ao buscar pedidos:", erro);
+      return res.status(500).json({ erro: "Erro ao buscar pedidos" });
+    }
+
+    return res.status(200).json({ pedidos: resultados });
   });
 });
 

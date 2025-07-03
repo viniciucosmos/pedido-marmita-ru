@@ -73,7 +73,7 @@ function Pedidos() {
         </ul>
       </div>
 
-      <main>
+      <main className='main-pedidos'>
         <h1 className="pedidos-titulo">FAZER PEDIDO</h1>
 
         {usuario ? (

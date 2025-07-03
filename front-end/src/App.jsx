@@ -4,6 +4,7 @@ import Login from './page/Login/Login';
 import Cadastro from './page/Cadastro/Cadastro';
 import PainelControle from './page/PainelControle/PainelControle';
 import Pedidos from './page/Pedidos/Pedidos'
+import ListarPedidos from './page/ListarPedidos/ListarPedidos';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route path="/cadastro" element={<Cadastro/>} />
         <Route path="/painel-de-controle" element={<PainelControle/>} />
         <Route path="/fazer-pedido" element={<Pedidos/>} />
+        <Route path="/listar-pedidos" element={<ListarPedidos/>} />
+
       </Routes>
     </BrowserRouter>
   );

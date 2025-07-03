@@ -64,3 +64,14 @@ body {
   flex: 1;
   padding: 20px;
 }
+
+.ListarPedidos{
+  min-height: 100vh;
+  background-color: #F9F4C9; 
+  font-family: inherit;
+  background-image: url(./assets/pattern.png);
+  background-position: center center; /* para centralizar a imagem */
+  background-size: 150% 100%; 
+  position: relative; /* garante que elementos absolutos/relativos fiquem ancorados aqui */
+  overflow-x: hidden; 
+}

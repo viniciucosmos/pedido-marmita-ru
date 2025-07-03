@@ -1,0 +1,200 @@
+/* Comportamento suave no scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Header */
+.header {
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+}
+
+.logo-topo-listar {
+  width: 250px;
+  height: auto;
+  margin-right: 50px;
+  margin-top: 150px;
+}
+
+/* Botão menu */
+.botao-menu {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 70px !important;
+  height: 70px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icone-menu {
+  width: 24px;
+  height: 24px;
+}
+
+/* Sidebar */
+.logo-sidebar {
+  width: 40px;
+  height: auto;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  color: white;
+  padding: 1rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  background: none;
+}
+
+.sidebar::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, #EFEFEF, #575656);
+  opacity: 0.93;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.sidebar.aberto {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.sidebar .fechar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  color: #16492F;
+  font-size: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.sidebar li {
+  margin: 1rem 0;
+}
+
+.sidebar a,
+.sidebar button {
+  color: #16492F;
+  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Main */
+.main-listar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* centraliza horizontalmente */
+  justify-content: center;
+  margin-top: 80px;
+  gap: 1rem;
+}
+
+.listar-titulo {
+  color: #16492F;
+  font-size: 40px;
+  align-self: flex-start;
+  font-family: 'Oswald', sans-serif;
+  margin-left: 50px;
+  margin-top: 70px;
+  margin-bottom: 10px;
+}
+
+.label-listar {
+  margin-left: 50px;
+  align-self: flex-start;
+  font-weight: bolder;
+  font-family: 'Oswald', sans-serif;
+  color: #16492F;
+  font-size: 20px;
+}
+
+/* Botão */
+.botao-listar {
+  font-weight: bolder;
+  font-family: 'Inter', sans-serif;
+  background-color: #16492F;
+  color: white;
+  font-size: 20px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  width: 250px;
+  height: 70px;
+  justify-content: center;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.botao-listar:hover {
+  background-color: gray;
+}
+
+.tabela-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', sans-serif;
+  table-layout: auto;
+}
+
+th, td {
+  padding: 12px 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 16px;
+  white-space: nowrap; /* impede quebra de linha */
+}
+
+@media (max-width: 600px) {
+  th, td {
+    font-size: 14px;
+    padding: 8px 5px;
+  }
+}
