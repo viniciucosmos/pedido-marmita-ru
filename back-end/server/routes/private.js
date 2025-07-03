@@ -48,8 +48,9 @@ router.post("/pedido", (req, res) => {
     const valor = usuario.subsidio ? 2.00 : 14.00;
 
     // Salvar pedido
-    const salvar = "INSERT INTO pedidos (id_usuario_FK, valor) VALUES (?, ?)";
-    connection.query(salvar, [usuario.id_usuario, valor], (erro) => {
+    const salvar = "INSERT INTO pedidos (id_usuario_FK, valor, matricula) VALUES (?, ?, ?)";
+    connection.query(salvar, [usuario.id_usuario, valor, matricula], (erro) => {
+
       if (erro) {
         console.error("Erro ao salvar pedido:", erro);
         return res.status(500).json({ erro: "Erro ao salvar pedido" });
